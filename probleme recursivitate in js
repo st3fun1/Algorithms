@@ -1,0 +1,150 @@
+function count7(n){
+
+  if(Math.floor(n/10) == 0){
+     return 0;
+  }
+  var count = 0 
+  if(n%10 == 7){
+   count++;
+  }
+  return count + count7(Math.floor(n/10));
+}
+count7(171);
+//1
+count7(1771);
+//2
+count7(17771);
+//3
+count7(17777);
+//4
+count7(77777);
+
+
+function changeXY(str){
+  if(str.length == 0 ){
+     return '';
+   }
+   console.log('str.substr',str.substr(0,1));
+   console.log('str.slice',str.slice(1));
+   return str.substr(0,1).replace('x','y') + changeXY(str.slice(1));
+}
+
+
+function count8b(n){
+ if (n == 0) return 0;
+    if (n >= 88 && n % 100 == 88) return 2 + count8b(Math.floor(n / 10));
+    if (n % 10 == 8) return 1 + count8b(Math.floor(n/10));
+    return count8b(Math.floor(n/10))
+
+}
+
+function sumDigits(n){
+  if(n == 0 ){
+    return 0;
+  }
+  return n%10 + sumDigits(Math.floor(n/10));
+}
+
+
+function sleepIn(weekday, vacation){
+   return(!weekday || vacation);
+}
+
+var monkeyTrouble = function(aSmile, bSmile){
+     return(aSmile && bSmile || !aSmile && !bSmile);
+}
+
+var sumDouble  = function(a,b){
+   if(a == b) return 2*(a+b);
+   return a+b;
+}
+
+var diff21 = function(n){
+    if(n > 21) return 2*(n-21);
+    return 21-n;
+}
+
+var stringTImes = function(str,n){
+  return str.repeat(n);
+}
+
+var word = "breakfast";
+word.split('').map((i)=>{console.log(i.charCodeAt(0)); return i.charCodeAt(0);}).filter((i)=>i%2 == 1).reduce((p,c)=>p + c);
+
+function reverse(str) {
+  return str.length > 1 ? str.slice(-1) + reverse(str.slice(0,-1)) : str;
+}
+
+function songDecoder(song){
+  // ...
+  return song.replace(/(WUB)+/g,' ').trim();
+}
+
+function abbreviate(string) {
+  return string.replace(/\w{4,}/g, function(word) {
+    return word[0] + (word.length - 2) + word.slice(-1);
+  });
+}
+//Math
+Math.round = function(number) {
+  return (number - parseInt(number) >= 0.5) ? parseInt(number) + 1 : parseInt(number) ;
+};
+
+Math.ceil = function(number) {
+  return (parseInt(number) === number) ? number : parseInt(number) + 1;
+};
+Math.floor = function(number) {
+  return parseInt(number);
+};
+
+
+//recursiv
+
+function accum(s) {
+	// your code
+  var l = s.split('').length;
+  var m = [];
+  for(var i=0;i<l;i++){
+     m.push(s.charAt(i).toUpperCase() + s.charAt(i).toLowerCase().repeat(i));
+  }
+  return m.join('-');
+}
+
+function accum(s) {
+  return s.split('').map((x,index) => x.toUpperCase()+Array(index+1).join(x.toLowerCase())).join('-');
+}
+
+
+//str
+
+res = str.split('').map(function(x){
+ if(x.match(/[A-Z]/g)){
+     return x.toUpperCase();
+ }else{
+    return x.toLowerCase();
+ }
+});
+
+
+function steamrollArray(arr) {
+  // I'm a steamroller, baby
+ return arr.reduce(function(a,b){
+     return a.concat(Array.isArray(b) ? steamrollArray(b) : b);
+  },[]);
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+
+
+var capitals = function (word) {
+	// Write your code here
+  return word.split('').map(function(i,indx){
+      if(/[A-Z]/g.test(i)) return indx;
+  }).filter(function(i){;
+    return i !== undefined;
+  });
+};
+
+
+

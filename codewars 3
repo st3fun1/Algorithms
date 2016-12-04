@@ -1,0 +1,25 @@
+Your order, please
+
+
+function order(words){
+  // ...
+   var a = words.split(' ');
+   var l = a.length;
+   var m = '';
+   var val;
+   var b = [];
+   for(var i=1;i<=l;i++){
+      val = a.find((x) => {
+        if(parseInt(x.replace(/[^0-9]/g,'')) == i) return x;
+      });
+      b.push(val);
+   }
+  return b.join(' ');
+}
+
+Replace With Alphabet Position
+function alphabetPosition(text) {
+ return text.replace(/[^A-Z]/gi,'').toUpperCase().split('').map((x)=>{
+     return 26 - (90-x.charCodeAt(0));
+ }).join(' ');
+}

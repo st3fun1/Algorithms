@@ -1,0 +1,99 @@
+var Person = function(firstAndLast) {
+    
+    var fullName = firstAndLast;
+    this.getFirstName = function(){
+      return fullName.split(' ')[0];
+    };
+    this.getLastName = function(){
+      return fullName.split(' ')[1];
+    };
+    this.getFullName = function(){
+      return fullName;
+    };
+    this.setFirstName= function(first){
+      fullName = first + " " + fullName.split(' ')[1];
+    };
+    this.setLastName= function(last){
+      fullName = fullName.split(' ')[0] + " " + last;
+    };
+    this.setFullName= function(firstAndLast){
+      fullName = firstAndLast;
+    };
+  
+};
+
+var bob = new Person('Bob Ross');
+
+
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  var regex = /([a-z])(?=[A-Z])|\s|\_/g;
+  return str.replace(regex,'$1-').toLowerCase();
+ 
+}
+
+spinalCase('AllThe-small Things');
+
+
+function pairElement(str) {
+  var arr =  str.split('').map(function(item){
+      switch(item){
+        case 'G':
+          return [item,'C'];
+        case 'C':
+          return [item,'G'];
+        case 'A':
+          return [item,'T'];
+        case 'T':
+          return [item,'A'];
+      }
+  });
+  return arr;
+}
+
+pairElement("GCG");
+
+
+
+function fearNotLetter(str) {
+  var charCodes = str.split('');
+  for(var i=0;i<charCodes.length;i++){
+      var diff = str.charCodeAt(i+1) - str.charCodeAt(i);
+      if(diff > 1){
+        return String.fromCharCode(str.charCodeAt(i)+1);
+      }
+  }
+  
+  return undefined;
+     
+}
+
+fearNotLetter("abce");
+
+
+function whereAreYou(collection, source) {
+  // What's in a name?
+  var arr = [];
+  var sourceKeys = Object.keys(source);
+  // Only change code below this line
+  arr = collection.filter(function(obj){
+     
+     for(var i=0;i<sourceKeys.length;i++){
+        
+         if(!obj.hasOwnProperty(sourceKeys[i]) || source[sourceKeys[i]] !== obj[sourceKeys[i]]){
+          return false;
+        }
+       
+     }
+    return true;
+    
+  });
+  // Only change code above this line
+  return arr;
+}
+//my result: { "a": 1, "b": 2 }, {"a":1}, { "a": 1, "b": 2, "c": 2 }
+//{ "a": 1, "b": 2 }, { "a": 1, "b": 2, "c": 2 }
+whereAreYou([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "c": 2 });
+
+
